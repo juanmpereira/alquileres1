@@ -1,0 +1,17 @@
+import artefactos.*
+describe "test" {
+test "la altura de la estufa es de 60"{
+	assert.equals(60, estufaDeCuarzo.altura())
+}
+test "el aire 1 tiene modo calor"{
+	assert.that(aire1.calor())
+}
+test "el aire 1 consume 4"{
+	assert.equals(4, aire1.consumo())
+}
+test "la mesa 1 con borde consume 80"{
+	assert.equals(80, mesa1.consumo())
+}
+}
+
+//como hago test para clases
