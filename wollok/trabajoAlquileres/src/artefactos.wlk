@@ -19,8 +19,6 @@ class AireAcondicionado{
 	method calor()= friocalor
 	
 }
-const aire1 = new AireAcondicionado(frigorias= 16,friocalor= true)
-const aire2 = new AireAcondicionado(frigorias=2400,friocalor=true )
 
 class Mesa{
 	const alturaPatas
@@ -39,5 +37,4 @@ class Mesa{
 	}
 	method calor()=false
 }
-const mesa1 = new Mesa(alturaPatas=10,bordeLuminoso= true)
-const mesa2= new Mesa(alturaPatas=80,bordeLuminoso=true)
+

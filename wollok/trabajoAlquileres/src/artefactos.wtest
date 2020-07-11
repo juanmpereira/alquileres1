@@ -1,0 +1,20 @@
+import artefactos.*
+describe "test" {
+const aire= new AireAcondicionado(frigorias= 16,friocalor= true)
+const mesa = new Mesa(alturaPatas=10,bordeLuminoso= true)
+
+ test "la altura de la estufa es de 60"{
+	assert.equals(60, estufaDeCuarzo.altura())
+}
+ test "el aire 1 tiene modo calor"{
+	assert.that(aire.calor())
+}
+ test "el aire 1 consume 4"{
+ 	assert.equals(4, aire.consumo())
+} 
+ test "la mesa 1 con borde consume 80"{
+	assert.equals(80, mesa.consumo())
+}
+}
+
+//como hago test para clases

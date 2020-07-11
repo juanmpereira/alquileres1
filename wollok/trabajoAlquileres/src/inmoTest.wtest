@@ -1,0 +1,47 @@
+import inmobi.*
+import artefactos.*
+import departamento.*
+
+describe "test" {
+	const aire1 = new AireAcondicionado(frigorias=2400,friocalor=true )
+    const mesa1= new Mesa(alturaPatas=80,bordeLuminoso=true)
+    const aire2= new AireAcondicionado(frigorias=3000,friocalor=false)
+    const mesa2= new Mesa(alturaPatas=25,bordeLuminoso=false)
+    const aire3= new AireAcondicionado(frigorias=1000,friocalor=true)
+    const mesa3= new Mesa(alturaPatas=75,bordeLuminoso=false)
+    var depto1=new Departamento(superficie=120,habitaciones=5,barrio="hurlingham",artefactos=[aire1,mesa1,estufaDeCuarzo])
+    var depto2=new Departamento(superficie=50,habitaciones=2,barrio="villa tesei",artefactos=[aire2,mesa2])
+    var depto3=new Departamento(superficie=60,habitaciones=4,barrio="villa tesei",artefactos=[aire3,mesa3])
+    const inmo1= new Inmobiliaria(deptos=[depto1,depto2,depto3])
+    const inmo2= new Inmobiliaria(deptos=[depto1,depto2])
+    
+ test "los departamentos familiares son el primero y el tercero"{
+ 	assert.equals([depto1,depto3],inmo1.deptosFamiliares())
+ }
+    
+ test "los barrios son villa tesei y hurlingham"{
+ 	assert.equals(["hurlingham","villa tesei"],inmo1.barrios())
+ }
+ 
+ test "la inmo tolera el inviero"{
+ 	assert.that(inmo1.toleraInvierno())
+ }
+ test "certifica bajo consumo para 3000 wats"{
+ 	assert.that(inmo1.certificaBajoConsumo(3000))
+ }
+ test "no lo certifica para 2000 wats"{
+ 	assert.notThat(inmo1.certificaBajoConsumo(2000))
+ }
+ test "el barrio del depto mas grandes es hurlingham"{
+ 	assert.equals("hurlingham",inmo1.barrioDeptoMasGrande())
+ }
+ test "la inmo1 tiene 1 solo depto con mas de 2 artefactos"{
+ 	assert.equals(1,inmo1.cantMasDe2Accesorios())
+ }
+// test "el consumo de deptos compactados de la inmo2 es 750+600"{
+ //   assert.equals(1350,inmo2.consumoTotalCompactados())
+//}
+test "de la inmo2 con el depto3 es compatible el depto 2"{
+	assert.equals([depto2],inmo2.sonCompatibles(depto3))
+}
+}

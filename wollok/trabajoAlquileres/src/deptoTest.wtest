@@ -1,0 +1,20 @@
+import departamento.*
+import artefactos.*
+describe "test" {
+   const aire1 = new AireAcondicionado(frigorias=2400,friocalor=true )
+   const mesa1= new Mesa(alturaPatas=80,bordeLuminoso=true)
+   const depto1=new Departamento(superficie=120,habitaciones=5,barrio="hurlingham",artefactos=[aire1,mesa1,estufaDeCuarzo])
+ test "el depto1 es espacioso"{
+	assert.that(depto1.esEspacioso())
+}
+ test "el depto1 consume 2880"{
+ 	assert.equals(2880,depto1.consumoElectrico())
+ }
+ test"el accesorio de mas consumo del depto1 es la mesa"
+   { assert.equals(mesa1,depto1.accesorioMasAlto())
+}
+ test "tiene 2 articulos de alto consumo del dept 1 son la estufa y el aire"
+{
+	assert.equals(2,depto1.cantidadAltoConsumo())
+}
+}

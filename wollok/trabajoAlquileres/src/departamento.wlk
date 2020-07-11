@@ -4,8 +4,9 @@ class Departamento {
   const superficie
   const habitaciones
   var property barrio
-   var artefactos
+   var property artefactos
    method habitaciones()=habitaciones
+   method superficie()=superficie
    method esEspacioso(){
    	if (habitaciones <= 2)
    	return superficie > 45
@@ -18,19 +19,26 @@ class Departamento {
 	method accesorioMasAlto(){
 		return artefactos.max({a=>a.altura()})
 	}
-
     method consumoArtefactos(){
     return artefactos.sum({a=>a.consumo()})
     }
     method tieneCalefa(){
-    	return artefactos.any({a=>a.calefaccion()})
+    	return artefactos.any({a=>a.calor()})
     }
     method cantidadAltoConsumo (){
     	return artefactos.filter({a=>a.consumo()>400}).size()
     }
+    method mismoBarrio(depto){
+    	return self.barrio()==depto.barrio()
     }
-    const depto1=new Departamento(superficie=120,habitaciones=5,barrio="hurlingham",artefactos=[aire2,mesa2,estufaDeCuarzo])
-    
-    //como hacer los test para clases.
-    //donde pongo los ejemplos de deptos
+    method restaSuperficies(depto){
+    	return self.superficie()-depto.superficie()
+    }
+    method menos10Metros(depto){
+    if (self.restaSuperficies(depto)>=0)
+        return self.restaSuperficies(depto)<=10
+     else 
+        return self.restaSuperficies(depto)>=-10
+    }
+    }
     
